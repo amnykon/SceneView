@@ -1,10 +1,9 @@
 import Foundation
 import SceneKit
-import IdentifiableSet
 
 public protocol SceneControlDelegate: SCNSceneRendererDelegate {
-  func selected(nodeId: GenericId)
-  func isNodeSelectable(nodeId: GenericId) -> Bool
+  func selected(nodeId: String)
+  func isNodeSelectable(nodeId: String) -> Bool
 }
 
 open class SceneControl: SceneView {
@@ -28,24 +27,32 @@ open class SceneControl: SceneView {
     let point = sender.location(in: self)
     let selectableNode = hitTest(point: point)
 
-    guard let node = selectableNode as? SelectableNode else {
+    guard let node = selectableNode else {
       return
     }
 
-    sceneControlDelegate?.selected(nodeId: node.id)
+    if !(selectableNode is SelectableNode) {
+        return
+    }
+
+    guard let name = node.name else {
+        return
+    }
+
+    sceneControlDelegate?.selected(nodeId: name )
   }
 
-  func hitTest(
-    point: CGPoint
-  ) -> SCNNode? {
+  func hitTest(point: CGPoint) -> SCNNode? {
     let results = hitTest(point, options: nil)
     for result in results {
       var node = result.node
 
       while true {
-        if let selectableNode = node as? SelectableNode {
-          if sceneControlDelegate?.isNodeSelectable(nodeId: selectableNode.id) ?? true {
-            return node
+        if let selectableNode = node as? (SelectableNode & SCNNode) {
+          if let name = selectableNode.name {
+            if sceneControlDelegate?.isNodeSelectable(nodeId: name) ?? true {
+              return node
+            }
           }
         }
 

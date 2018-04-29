@@ -15,7 +15,6 @@
 		3F18B0AC203B6EBC008FBB1D /* SceneControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F18B0A3203B6EBC008FBB1D /* SceneControl.swift */; };
 		3F18B0AD203B6EBC008FBB1D /* SceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F18B0A4203B6EBC008FBB1D /* SceneView.swift */; };
 		3F18B0AE203B6EBC008FBB1D /* SceneControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F18B0A6203B6EBC008FBB1D /* SceneControlViewController.swift */; };
-		3F18B0B1203B70E8008FBB1D /* IdentifiableSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F18B0B0203B70E8008FBB1D /* IdentifiableSet.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +36,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F18B0B1203B70E8008FBB1D /* IdentifiableSet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,6 +1,5 @@
 import UIKit
 import SceneKit
-import IdentifiableSet
 
 open class SceneControlViewController: UIViewController {
   public let sceneControl: SceneControl
@@ -31,11 +30,11 @@ open class SceneControlViewController: UIViewController {
 }
 
 extension SceneControlViewController: SceneControlDelegate {
-  public func selected(nodeId: GenericId) {
+  public func selected(nodeId: String) {
     sceneControlDelegate?.selected(nodeId: nodeId)
   }
 
-  public func isNodeSelectable(nodeId: GenericId) -> Bool {
+  public func isNodeSelectable(nodeId: String) -> Bool {
     return  sceneControlDelegate?.isNodeSelectable(nodeId: nodeId) ?? true
   }
 }
